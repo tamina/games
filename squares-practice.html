@@ -1,0 +1,55 @@
+<doctype html>
+<!-- 
+This is based on the tutorial at https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Canvas_tutorial/Basic_usage 
+-->
+
+<head>
+<!--STYLE type="text/css"-->
+<style>
+
+  canvas{width: 400px; height: 400px;
+    padding:4px;
+    border-width: 1; border: solid; border-color:gray;
+    }
+
+</style>
+
+<script type="text/javascript">
+  function draw(){
+    var canvas = document.getElementById('tutorial');
+    canvas.width = 400;
+    canvas.height = 400;
+    if (canvas.getContext) {
+      var ctx = canvas.getContext("2d");
+      
+      //Find the smaller dimension of the canvas (width or height).
+      var size = canvas.width;
+      if(canvas.height < canvas.width){ size = canvas.height;}
+      
+      var n = 4;    //number of tiles per side
+      var pad = 4;    //padding in tiles.
+      var tileSize = size/n;
+      var squareSize = tileSize - 2*pad;
+      
+      for(i=0; i<n; i++){
+        for(j=0; j<n; j++){
+          var x = i*tileSize + pad;
+          var y = j*tileSize + pad;
+          ctx.fillStyle = "rgb(200,0,0)";
+          ctx.fillRect(x,y,squareSize,squareSize);
+        }
+      }
+
+
+    }
+  }
+
+</script>
+</head>
+
+<body onload="draw()">
+
+<canvas id="tutorial">
+</canvas>
+
+</body>
